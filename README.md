@@ -38,8 +38,8 @@ $ composer require sven/artisan-view --dev
 ```
 
 ### Registering the service provider
-If you're using Laravel 5.5, you can skip this step. The service provider will have already been registered
-thanks to auto-discovery. 
+If you're using Laravel 5.5 or above, you can skip this step. The service provider will have already been 
+registered thanks to auto-discovery.
 
 ## Usage
 When running `php artisan` now, you will see two new commands in the list: `make:view` and `scrap:view`.
