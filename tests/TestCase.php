@@ -12,7 +12,10 @@ abstract class TestCase extends AbstractPackageTestCase
         return ServiceProvider::class;
     }
 
-    protected function getEnvironmentSetUp($app)
+    /**
+     * Tear down the testing environment.
+     */
+    public function tearDown(): void
     {
         @mkdir(__DIR__.'/resources/views', 0755, true);
 
