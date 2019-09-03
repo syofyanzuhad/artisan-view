@@ -17,21 +17,10 @@ abstract class TestCase extends AbstractPackageTestCase
      */
     public function tearDown(): void
     {
-        @mkdir(__DIR__.'/resources/views', 0755, true);
+        /** @var \Illuminate\View\FileViewFinder $viewFinder */
+        $viewFinder = app('view.finder');
 
-        $app->config->set('view.paths', [
-            __DIR__.'/resources/views',
-        ]);
-
-        parent::getEnvironmentSetUp($app);
-    }
-
-    protected function tearDown(): void
-    {
-        // Remove all the files and folders in the configured
-        // view paths. This will make sure we have a clean
-        // state to start the next test with.
-        foreach (app('view.finder')->getPaths() as $path) {
+        foreach ($viewFinder->getPaths() as $path) {
             $this->clearDirectory($path);
         }
 
