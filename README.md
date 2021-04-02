@@ -83,8 +83,13 @@ To add sections to a view, you can use the `--section` option:
 $ php artisan make:view posts.create --section=content
 ```
 
-<details>
-<summary>See result</summary>
+# Add an inline section to the view
+# Remember to add quotes around the section if you want to use spaces
+$ php artisan make:view index --inline-section="title:Hello world"
+
+# Add an section to the view and fill it
+# Remember to add quotes around the section if you want to use spaces
+$ php artisan make:view index --section="content:<some-html-tag></some-html-tag>"
 
 ```blade
 @section('content')

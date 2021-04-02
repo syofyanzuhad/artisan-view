@@ -23,6 +23,6 @@ class Section implements Block
 
     public function render(): string
     {
-        return "@section('$this->contents')".PHP_EOL.PHP_EOL.'@endsection';
+        return "@section('{$this->getName()}')".PHP_EOL.$this->getContents().PHP_EOL.'@endsection'.PHP_EOL.PHP_EOL;
     }
 }
