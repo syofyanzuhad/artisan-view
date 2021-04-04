@@ -1,46 +1,46 @@
 <?php
 
-namespace Sven\ArtisanView;
+namespace Syofyanzuhad\ArtisanView;
 
 class Destroyer extends ViewActor
 {
-    /**
-     * Destroy the configured view(s).
-     */
-    public function destroy()
-    {
-        $views = $this->getViews();
+ /**
+  * Destroy the configured view(s).
+  */
+ public function destroy()
+ {
+  $views = $this->getViews();
 
-        $this->destroyViews(
-            $this->getViewNames($views)
-        );
-    }
+  $this->destroyViews(
+   $this->getViewNames($views)
+  );
+ }
 
-    /**
-     * @param array $names
-     */
-    protected function destroyViews(array $names)
-    {
-        foreach ($names as $name) {
-            $path = PathHelper::normalizePath(
-                $this->config->getPath().DIRECTORY_SEPARATOR.$name
-            );
+ /**
+  * @param array $names
+  */
+ protected function destroyViews(array $names)
+ {
+  foreach ($names as $name) {
+   $path = PathHelper::normalizePath(
+    $this->config->getPath() . DIRECTORY_SEPARATOR . $name
+   );
 
-            unlink($path);
+   unlink($path);
 
-            $this->removeParentDirectory($path);
-        }
-    }
+   $this->removeParentDirectory($path);
+  }
+ }
 
-    /**
-     * @param string $path
-     */
-    protected function removeParentDirectory($path)
-    {
-        $folderName = PathHelper::removeFileName($path);
+ /**
+  * @param string $path
+  */
+ protected function removeParentDirectory($path)
+ {
+  $folderName = PathHelper::removeFileName($path);
 
-        if (count(scandir($folderName)) === 2) {
-            rmdir($folderName);
-        }
-    }
+  if (count(scandir($folderName)) === 2) {
+   rmdir($folderName);
+  }
+ }
 }

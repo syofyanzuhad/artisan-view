@@ -1,14 +1,14 @@
 <?php
 
-namespace Sven\ArtisanView\Blocks;
+namespace Syofyanzuhad\ArtisanView\Blocks;
 
 class Extend extends Block
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function render()
-    {
-        return "@extends('{$this->getName()}')".PHP_EOL.PHP_EOL;
-    }
+ /**
+  * {@inheritdoc}
+  */
+ public function render()
+ {
+  return "@extends('{$this->getName()}')" . PHP_EOL . PHP_EOL;
+ }
 }
