@@ -1,14 +1,14 @@
 <?php
 
-namespace Sven\ArtisanView\Blocks;
+namespace Syofyanzuhad\ArtisanView\Blocks;
 
 class InlineSection extends Block
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function render()
-    {
-        return "@section('{$this->getName()}', '{$this->getContents()}')".PHP_EOL.PHP_EOL;
-    }
+ /**
+  * {@inheritdoc}
+  */
+ public function render()
+ {
+  return "@section('{$this->getName()}', '{$this->getContents()}')" . PHP_EOL . PHP_EOL;
+ }
 }

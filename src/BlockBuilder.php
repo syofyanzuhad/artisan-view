@@ -1,20 +1,20 @@
 <?php
 
-namespace Sven\ArtisanView;
+namespace Syofyanzuhad\ArtisanView;
 
-use Sven\ArtisanView\Blocks\Block;
+use Syofyanzuhad\ArtisanView\Blocks\Block;
 
 class BlockBuilder
 {
-    /**
-     * @param \Sven\ArtisanView\Blocks\Block[] $blocks
-     *
-     * @return string
-     */
-    public static function build($blocks)
-    {
-        return array_reduce($blocks, function ($carry, Block $block) {
-            return $carry.$block->render();
-        }, '');
-    }
+ /**
+  * @param \Syofyanzuhad\ArtisanView\Blocks\Block[] $blocks
+  *
+  * @return string
+  */
+ public static function build($blocks)
+ {
+  return array_reduce($blocks, function ($carry, Block $block) {
+   return $carry . $block->render();
+  }, '');
+ }
 }

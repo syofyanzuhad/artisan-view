@@ -1,19 +1,19 @@
 <?php
 
-namespace Sven\ArtisanView;
+namespace Syofyanzuhad\ArtisanView;
 
-use Sven\ArtisanView\Blocks\Block;
-use Sven\ArtisanView\Voters\ExtendsParent;
-use Sven\ArtisanView\Voters\SectionsInParent;
-use Sven\ArtisanView\Voters\StacksFromParent;
-use Sven\ArtisanView\Voters\YieldsFromParent;
-use Sven\ArtisanView\Voters\InlineSectionsInParent;
 use Symfony\Component\Console\Input\InputInterface;
+use Syofyanzuhad\ArtisanView\Blocks\Block;
+use Syofyanzuhad\ArtisanView\Voters\ExtendsParent;
+use Syofyanzuhad\ArtisanView\Voters\InlineSectionsInParent;
+use Syofyanzuhad\ArtisanView\Voters\SectionsInParent;
+use Syofyanzuhad\ArtisanView\Voters\StacksFromParent;
+use Syofyanzuhad\ArtisanView\Voters\YieldsFromParent;
 
 class BlockStack
 {
     /**
-     * @var \Sven\ArtisanView\Blocks\Block[]
+     * @var \Syofyanzuhad\ArtisanView\Blocks\Block[]
      */
     protected $blocks = [];
 
@@ -21,7 +21,7 @@ class BlockStack
      * @param \Symfony\Component\Console\Input\InputInterface $input
      * @param string $path
      *
-     * @return \Sven\ArtisanView\BlockStack
+     * @return \Syofyanzuhad\ArtisanView\BlockStack
      */
     public function build(InputInterface $input, $path)
     {
@@ -33,9 +33,9 @@ class BlockStack
             new SectionsInParent,
         ];
 
-        /** @var \Sven\ArtisanView\Voters\Voter $voter */
+        /** @var \Syofyanzuhad\ArtisanView\Voters\Voter $voter */
         foreach ($voters as $voter) {
-            if (! $voter->canHandle($input)) {
+            if (!$voter->canHandle($input)) {
                 continue;
             }
 
@@ -46,11 +46,11 @@ class BlockStack
     }
 
     /**
-     * @param \Sven\ArtisanView\Blocks\Block[] ...$blocks
+     * @param \Syofyanzuhad\ArtisanView\Blocks\Block[] ...$blocks
      *
-     * @return \Sven\ArtisanView\BlockStack
+     * @return \Syofyanzuhad\ArtisanView\BlockStack
      */
-    public function add(Block ...$blocks)
+    public function add(Block...$blocks)
     {
         foreach ($blocks as $block) {
             $this->blocks[] = $block;
@@ -60,7 +60,7 @@ class BlockStack
     }
 
     /**
-     * @return \Sven\ArtisanView\Blocks\Block[]
+     * @return \Syofyanzuhad\ArtisanView\Blocks\Block[]
      */
     public function all()
     {

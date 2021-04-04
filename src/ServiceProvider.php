@@ -1,6 +1,6 @@
 <?php
 
-namespace Sven\ArtisanView;
+namespace Syofyanzuhad\ArtisanView;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 

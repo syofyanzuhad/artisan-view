@@ -1,49 +1,48 @@
 <?php
 
-namespace Sven\ArtisanView\Voters;
+namespace Syofyanzuhad\ArtisanView\Voters;
 
 use Illuminate\Support\Str;
-use Sven\ArtisanView\Blocks\InlineSection;
-use Sven\ArtisanView\Blocks\Section;
-use Sven\ArtisanView\BlockStack;
 use Symfony\Component\Console\Input\InputInterface;
+use Syofyanzuhad\ArtisanView\BlockStack;
+use Syofyanzuhad\ArtisanView\Blocks\Section;
 
 class SectionsInParent implements Voter
 {
-    /**
-     * @var string
-     */
-    protected $path;
+ /**
+  * @var string
+  */
+ protected $path;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function canHandle(InputInterface $input)
-    {
-        return $input->hasOption('section');
-    }
+ /**
+  * {@inheritdoc}
+  */
+ public function canHandle(InputInterface $input)
+ {
+  return $input->hasOption('section');
+ }
 
-    public function inPath($path)
-    {
-        $this->path = $path;
+ public function inPath($path)
+ {
+  $this->path = $path;
 
-        return $this;
-    }
+  return $this;
+ }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function run(InputInterface $input, BlockStack $blockStack)
-    {
-        foreach ((array) $input->getOption('section') as $section) {
-            if (Str::contains($section, ':')) {
-                $section = explode(':', $section);
-                $name = $section[0];
-                unset($section[0]);
-                $content = join("", $section);
+ /**
+  * {@inheritdoc}
+  */
+ public function run(InputInterface $input, BlockStack $blockStack)
+ {
+  foreach ((array) $input->getOption('section') as $section) {
+   if (Str::contains($section, ':')) {
+    $section = explode(':', $section);
+    $name    = $section[0];
+    unset($section[0]);
+    $content = join("", $section);
 
-                $blockStack->add(new Section($name, $content));
-            }
-        }
-    }
+    $blockStack->add(new Section($name, $content));
+   }
+  }
+ }
 }
